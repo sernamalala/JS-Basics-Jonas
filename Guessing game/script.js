@@ -1,26 +1,28 @@
 'use strict';
-//DOM MANIPULATION
-const message = document.querySelector(".message");
-console.log(message)
+const minNum = 1;
+const maxNum = 20;
+let randomNumber = Math.floor(Math.random() * (maxNum - minNum) + minNum);
+console.log(randomNumber);
 
-const score = document.querySelector(".score");
-const number = document.querySelector(".number");
+let userInput = document.querySelector(".guess");
+let checkBTN = document.querySelector(".check");
+let score = document.querySelector(".score");
+let highscore = document.querySelector(".highscore");
 
-score.textContent = 13;
-number.textContent = 20;
+checkBTN.addEventListener("click", function () {
+    console.log("USER:",userInput.value)
 
-const guess = Number(document.querySelector(".guess").value);
+    let guess = Number(userInput.value);
 
-//EVENT LISTENER
-
-const checkButton = document.querySelector(".check");
-checkButton.addEventListener("click",function(){
-    const guessValueFromUser = Number(document.querySelector(".guess").value);
-    console.log(guessValueFromUser, typeof guess);
-
-    //evaluation
-
-    if(!guess){
-        message.textContent = "❌ Not a number";
+    if (guess === randomNumber) {
+        score.textContent = Number(score.textContent) + 1;
+        if(Number(highscore.textContent) < Number(score.textContent)){
+            highscore.textContent = Number(score.textContent);
+        }
+        
     }
-});
+    else{
+        score.textContent = Number(score.textContent) - 1;
+    }
+})
+
