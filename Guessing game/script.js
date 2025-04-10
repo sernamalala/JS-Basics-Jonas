@@ -8,6 +8,7 @@ let userInput = document.querySelector(".guess");
 let checkBTN = document.querySelector(".check");
 let score = document.querySelector(".score");
 let highscore = document.querySelector(".highscore");
+let body = document.querySelector("body");
 
 checkBTN.addEventListener("click", function () {
     console.log("USER:",userInput.value)
@@ -16,6 +17,7 @@ checkBTN.addEventListener("click", function () {
 
     if (guess === randomNumber) {
         score.textContent = Number(score.textContent) + 1;
+        body.style.backgroundColor = "lightgreen";
         if(Number(highscore.textContent) < Number(score.textContent)){
             highscore.textContent = Number(score.textContent);
         }
